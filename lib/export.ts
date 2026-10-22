@@ -1,0 +1,20 @@
+import {jsPDF} from 'jspdf';
+import JSZip from 'jszip';
+import type {HandoffPackage} from './models';
+import {bankerSummary} from './banker-summary';
+import {money} from './domain';
+export function saveBlob(blob:Blob,name:string){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+export function pdfSummary(p:HandoffPackage){
+ const pdf=new jsPDF();let y=23;
+ const line=(text:string,size=10)=>{pdf.setFontSize(size);const wrapped=pdf.splitTextToSize(text,172) as string[];for(const row of wrapped){if(y>275){pdf.addPage();y=23;}pdf.text(row,19,y);y+=size*.48+2;}y+=2;};
+ pdf.setTextColor(16,35,62);line('LoanMaster',23);line('Prepared for hand-off | Mock company prototype',11);line(p.profile.company||'Company not provided',17);line(`Generated ${p.generatedAt}`);
+ line('Company and request',14);line(`${p.profile.industry||'Industry unknown'} | ${p.profile.location||'Location unknown'} | ${p.profile.years??'Unknown'} years operating | Revenue ${money(p.profile.revenue)}`);line(`${money(p.profile.request.amount)} | ${p.profile.request.purpose} | ${p.profile.request.product} | ${p.profile.request.timing||'Timing unknown'}`);line(`Relationship: ${p.profile.relationship}. Collateral: ${p.profile.collateral||'Not provided'}. Reporting period: ${p.profile.period||'Unknown'}.`);
+ line('Relationship manager',14);line(p.existingBanker||p.banker?.banker.name||'Not selected');if(p.banker){line('Real banker, official public profile. Fit is not an approval probability.');bankerSummary(p.profile,p.banker.banker).forEach(paragraph=>line(paragraph));line(`Official profile: ${p.banker.banker.source}`);}
+ line('Illustrative financial scenario',14);line(`Principal ${money(p.scenario.principal)}; annual sample rate ${p.scenario.rate}%; term ${p.scenario.years} years. Cash flow ${money(p.scenario.cashFlow)}; existing annual debt service ${money(p.scenario.existingDebt)}.`);
+ if(p.calculations){line(`Monthly payment ${money(p.calculations.monthly)}; annual proposed debt service ${money(p.calculations.annual)}; total interest ${money(p.calculations.interest)}; DSCR ${p.calculations.dscr?.toFixed(2)??'undefined (zero denominator)'}x.`);}else line('No term-loan calculation: missing inputs or revolving product.');
+ line(`Illustrative capacity ${p.capacity?`${money(p.capacity.low)} to ${money(p.capacity.high)}`:'unavailable'} using ${p.scenario.minDscr}x to ${p.scenario.maxDscr}x coverage.`);line(`Paydown cash consumed ${money(p.scenario.paydown)}; assumed annual payment reduction ${money(p.scenario.annualDebtReduction)}; remaining liquidity ${money(p.liquidity)}.`);
+ line('Assumptions and open questions',14);p.assumptions.forEach(a=>line(a));p.findings.forEach(f=>line(`${f.title}: ${f.reason}`));
+ line('Reviewed, selected document manifest',14);if(!p.documents.length)line('No reviewed documents selected.');p.documents.forEach(d=>line(`${d.name} | ${d.category} | ${d.period||'Period missing'} | ${d.company} | v${d.version} | ${d.status}`));line('Draft introductory message - not sent',14);line(p.message);
+ return pdf.output('blob');
+}
+export async function exportZip(p:HandoffPackage,files:Map<string,File>){const zip=new JSZip();zip.file('summary.pdf',pdfSummary(p));zip.file('summary.json',JSON.stringify(p,null,2));for(const d of p.documents){let data:Blob;if(d.sample){const response=await fetch(`/samples/${d.name}`);if(!response.ok)throw new Error(`Sample missing: ${d.name}`);data=await response.blob();}else{const file=files.get(d.id);if(!file)throw new Error(`${d.name} is no longer in this session. Reattach before export.`);data=file;}zip.file(`documents/${d.id}-${d.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`,await data.arrayBuffer());}saveBlob(await zip.generateAsync({type:'blob'}),'loanmaster-handoff.zip');}

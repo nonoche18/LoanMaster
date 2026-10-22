@@ -1,0 +1,7 @@
+All four profiles are fictional demo personas. No person is a verified Bank of America banker.
+Dataset authored and checked 2026-10-21. Revenue, geography and industry attributes are scenario inputs, not bank facts.
+Maya Bennett: Manufacturing, Wholesale trade; Illinois, Wisconsin; $5m-$25m.
+Daniel Park: Manufacturing; Wisconsin, Michigan; $1m-$50m.
+Elena Rivera: Wholesale trade, Professional services; Illinois, Indiana; $5m-$25m.
+Jordan Ellis: Manufacturing; Illinois, Missouri; revenue coverage unknown.
+Public directory reference (not evidence for these fictional people): https://bankerlocator.bankofamerica.com/
