@@ -1,0 +1,12 @@
+export type Page = 'Overview'|'Business Profile'|'Banker Match'|'Loan Readiness'|'Documents & Hand-off';
+export interface FinancingRequest { purpose: 'Equipment'|'Working capital'; amount: number|null; product: 'Term loan'|'Revolving credit'; timing: string; }
+export interface BusinessProfile { company:string; industry:string; location:string; years:number|null; revenue:number|null; relationship:string; currentBanker:string; collateral:string; period:string; cashFlow:number|null; debtService:number|null; cash:number|null; request:FinancingRequest; }
+export interface Evidence { criterion:'industry'|'geography'|'revenue'|'financing'; points:number; known:boolean; matches:boolean; weight:number; explanation:string; source:string; verified:string; }
+export interface BankerProfile { id:string; name:string; role:string; location:string; industries:string[]|null; states:string[]|null; revenue:[number,number]|null; bio:string; lendingEvidence?:{level:'commercial-credit'|'capital-access'|'credit-team'; summary:string}; title?:string; phone?:string; address?:string; image?:string; revenueLabel?:string; geographyBasis?:string; fictional:boolean; source:string; verified:string; }
+export interface MatchResult { banker:BankerProfile; score:number|null; coverage:number; evidence:Evidence[]; }
+export interface FinancialScenario { principal:number|null; rate:number; years:number; cashFlow:number|null; existingDebt:number|null; minDscr:number; maxDscr:number; paydown:number; annualDebtReduction:number; }
+export interface ReadinessFinding { id:string; severity:'action'|'review'|'info'; title:string; reason:string; page:Page; }
+export interface DocumentRecord { id:string; name:string; category:string; period:string; company:string; version:number; status:'Needs review'|'Reviewed'; sample:boolean; selected:boolean; fields?:{cashFlow:number; source:string; confidence:'Sample only'}; }
+export interface Task extends ReadinessFinding { complete:boolean; }
+export interface HandoffPackage { version:1; generatedAt:string; fingerprint:string; profile:BusinessProfile; banker:MatchResult|null; existingBanker:string|null; scenario:FinancialScenario; calculations:LoanResult|null; capacity:{low:number;high:number}|null; liquidity:number|null; assumptions:string[]; findings:ReadinessFinding[]; documents:DocumentRecord[]; message:string; }
+export interface LoanResult { monthly:number; annual:number; interest:number; total:number; dscr:number|null; }
