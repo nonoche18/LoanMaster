@@ -1,8 +1,0 @@
-FICTIONAL DEMO DOCUMENT. Northstar Precision Works. New York City manufacturer.
-Historical financial statements, FY 2025 (year ended December 31, 2025).
-Annual revenue: $12,000,000
-Annual cash flow available for debt service: $1,200,000
-Annual existing debt service: $480,000
-Cash balance at December 31, 2025: $850,000
-Illustrative cash-flow reconciliation: operating cash generated $1,500,000 less maintenance capital expenditure $300,000 = $1,200,000 available for debt service, before existing debt payments.
-This abbreviated sample is not an audited financial statement or tax return.
