@@ -1,5 +1,6 @@
+import {expansionDemo as story} from './expansion-demo';
 import type {BankerProfile,BusinessProfile,DocumentRecord} from './models';
-export const sampleProfile:BusinessProfile={company:'Northstar Precision Works',industry:'Manufacturing',location:'New York',years:14,revenue:12000000,relationship:'Existing client',currentBanker:'',collateral:'New CNC equipment; subject to valuation',period:'FY 2025',cashFlow:1200000,debtService:480000,cash:850000,request:{purpose:'Equipment',amount:750000,product:'Term loan',timing:'Within 3 months'}};
+export const sampleProfile:BusinessProfile={company:story.company,industry:'Manufacturing',location:story.location,years:14,revenue:story.revenue2025,relationship:'Existing client',currentBanker:'',collateral:'New CNC equipment for equipment purchasing and expansion; subject to valuation',period:story.period,cashFlow:story.annualCashFlow,debtService:story.annualExistingPayments,cash:850000,request:{purpose:'Equipment',amount:story.requestedAmount,product:'Term loan',timing:'Within 3 months'}};
 export const emptyProfile:BusinessProfile={company:'',industry:'',location:'',years:null,revenue:null,relationship:'Unknown',currentBanker:'',collateral:'',period:'',cashFlow:null,debtService:null,cash:null,request:{purpose:'Equipment',amount:null,product:'Term loan',timing:''}};
 // Curated official-profile snapshot. Unknown revenue evidence remains null.
 export interface BankerAdapter {list():BankerProfile[]}
@@ -98,7 +99,7 @@ export const publicBankerAdapter:BankerAdapter={list:()=>[
       10000000
     ],
     "revenueLabel": "Startups\u2013$10M",
-    "bio": "Her biography describes a portfolio spanning startups through businesses with up to $10M revenue, with treasury, credit and wealth-management collaboration. The $12M sample exceeds that published range; manufacturing is not a listed specialty.",
+    "bio": "Her biography describes a portfolio spanning startups through businesses with up to $10M revenue, with treasury, credit and wealth-management collaboration. Manufacturing is not a listed specialty; confirm suitability for Northstar’s precision-manufacturing plans.",
     "source": "https://bankers.bankofamerica.com/edelmire.renelus",
     "image": "https://bofagb.my-lightning.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_JPG&versionId=068Dn00000HPwp5IAD&operationContext=DELIVERY&contentId=069Dn00000HGb1pIAD&page=0&d=/a/Dn000000xNt6/vGihZ8soh58lbXxTg_4jyJRF6rwkC7LHYXlUhgsjSt8&oid=00DDn0000014WMFMA2&dpt=null&viewId=",
     "lendingEvidence": {
@@ -109,6 +110,6 @@ export const publicBankerAdapter:BankerAdapter={list:()=>[
 ]};
 export const sampleDocuments:DocumentRecord[]=[
  {id:'financial',name:'northstar-fy2025-financials.txt',category:'Historical financial statements',period:'FY 2025',company:sampleProfile.company,version:1,status:'Reviewed',sample:true,selected:true},
- {id:'debt',name:'northstar-debt-schedule.txt',category:'Debt schedule',period:'FY 2025',company:sampleProfile.company,version:1,status:'Reviewed',sample:true,selected:true},
- {id:'interim',name:'northstar-interim-review.txt',category:'Interim P&L and balance sheet',period:'H1 2026',company:sampleProfile.company,version:1,status:'Needs review',sample:true,selected:false,fields:{cashFlow:1080000,source:'Sample interim review, line 6: FY 2025 comparative annual cash flow = $1,080,000; conflicts with FY 2025 statements.',confidence:'Sample only'}}
+ {id:'debt',name:'northstar-debt-schedule.txt',category:'Debt schedule',period:'FY 2025',company:sampleProfile.company,version:1,status:'Needs review',sample:true,selected:false},
+ {id:'application',name:'northstar-application.txt',category:'Projections and use of funds',period:'FY 2025',company:sampleProfile.company,version:1,status:'Needs review',sample:true,selected:false}
 ];

@@ -1,8 +1,4 @@
-FICTIONAL DEMO DOCUMENT. Northstar Precision Works. New York City manufacturer.
-Interim P&L and balance sheet review, H1 2026.
-Half-year revenue: $6,100,000. Do not treat this as annual revenue.
-Half-year operating cash generated: $690,000; maintenance capex: $150,000.
-Cash at June 30, 2026: $900,000. Confirm freshness with banker.
-FY 2025 comparative annual cash flow: $1,080,000.
-The comparative value conflicts with the FY 2025 statement's $1,200,000. Reconcile with accountant; do not silently apply it or annualize the H1 values.
-Sample extraction fixture only; no AI provider analyzed this file.
+FICTIONAL PREPARATION NOTE. Northstar Precision Works.
+The latest Q3 2026 interim income statement and balance sheet have not been provided.
+This note is not a financial statement and is not included as a reviewed document.
+Use the FY 2025 annual figures ($9,840,000 revenue, $780,000 cash available for debt service, $360,000 existing annual payments) until current statements are supplied and reviewed.

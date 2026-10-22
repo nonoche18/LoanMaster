@@ -1,6 +1,6 @@
 # New York banker mockup — public-source snapshot
 
-Checked October 21, 2026. This is a curated shortlist, not the complete directory. The company Northstar Precision Works is fictional, located in New York City, in manufacturing, with $12m annual sales, 14 years operating, $1.2m annual cash flow before debt payments, $480k annual debt service and $850k cash (FY 2025). It requests $750k for equipment. These are illustrative team assumptions, not financial disclosures of a real business.
+Checked October 21, 2026. This is a curated shortlist, not the complete directory. The company Northstar Precision Works is fictional, located in New York City, in manufacturing, with $9.84m FY 2025 annual sales, 14 years operating, $780k annual cash flow before debt payments, $360k annual debt service and $850k cash (FY 2025). It requests $2m for equipment. These are illustrative team assumptions, not financial disclosures of a real business.
 
 ## Official sources
 
@@ -22,7 +22,7 @@ Team-designed, illustrative evidence score, not an empirically validated suitabi
 | Location evidence | 20 | Same-state office earns 15 because service territory is unconfirmed; different state earns 0. |
 | Financing evidence | 20 | Explicit commercial-credit experience earns 15; general capital access earns 10; credit-team collaboration earns 5. Exact requested-product expertise is unverified, so no profile earns 20. |
 
-For the $12m New York manufacturer: Habib 90 (35+25+15+15), Najieb 85 (35+25+15+10), Renelus 20 (0+0+15+5). The distinction reflects biography specificity, not a claim that one banker performs better. Counts of years, approval history, availability and protected characteristics are not used. The financing rubric applies to the supported equipment and working-capital requests without inventing specialization in either exact product.
+For the $9.84m New York manufacturer: Habib 90 (35+25+15+15), Najieb 85 (35+25+15+10), Renelus 45 (0+25+15+5). Renelus now receives revenue credit because $9.84m falls inside the published range up to $10m. The distinction reflects biography specificity, not a claim that one banker performs better. Counts of years, approval history, availability and protected characteristics are not used. The financing rubric applies to the supported equipment and working-capital requests without inventing specialization in either exact product.
 
 Dager has been removed from the displayed shortlist because his revenue range is unpublished. His source above is retained for provenance. Unknown criteria still suppress scores in the domain layer; no numbers are invented to fill gaps. All retained profiles have complete source coverage, which does not mean confirmed suitability.
 

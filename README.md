@@ -41,3 +41,7 @@ npm test
 The scope was narrowed to frontend screen design. No backend, authentication, live AI extraction, directory synchronization, bank integration or delivery is implemented. No deployment or contact with bankers. Uploaded files are memory-only and disappear on reload. Sample extraction is a fixed fictional fixture; manual review is required. Fit is deterministic, requiring complete evidence, and is not an approval probability. Sample rates and coverage assumptions are not BofA policy. Revolving credit intentionally has no term-loan calculation. Financial estimates omit fees and taxes.
 
 The complete pilot/business-case and presentation research from the original brief are outside the revised frontend scope. The original repository concept is preserved in `docs/original-concept.md`. Static screen captures are in `docs/screenshots/`.
+
+## New AI feature demonstrations
+
+Select **Documents & Hand-off → AI Application Review** for the three simulated application findings. Select **Loan Readiness → AI Loan Insights** for the editable $2m expansion comparison above the original calculator. All screens use one Northstar story: a $2m equipment/expansion request, $9.84m FY 2025 revenue, $780k cash available and $360k annual existing debt payments. Both comparison options fund the full $2m, over 7 or 10 years. No live AI provider is used. See [demo instructions and calculations](docs/ai-feature-demo.md) and the two `docs/screenshots/ai-*.png` presentation captures.
