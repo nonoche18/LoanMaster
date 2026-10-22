@@ -57,13 +57,14 @@ export function findings(p:BusinessProfile,docs:DocumentRecord[]):ReadinessFindi
  if([p.cashFlow,p.debtService,p.cash].some(x=>x===null)||!p.period)rows.push({id:'financial',severity:'action',title:'Complete your financial picture',reason:'Cash flow, debt service, liquidity and a reporting period make the scenario interpretable.',page:'Business Profile'});
  if(!p.company||!p.industry||!p.location||p.revenue===null||p.request.amount===null)rows.push({id:'profile',severity:'action',title:'Finish your business profile',reason:'Missing business or request details limit matching and preparation.',page:'Business Profile'});
  docs.forEach(d=>{const flags=documentFlags(d,docs,p);if(flags.length)rows.push({id:d.id,severity:'review',title:`Review ${d.name}`,reason:flags.join(' · '),page:'Documents & Hand-off'});});
+ if(docs.some(d=>d.id==='application'&&d.status==='Needs review')&&docs.some(d=>d.id==='debt'))rows.push({id:'debt-reconciliation',severity:'review',title:'Reconcile outstanding debt before hand-off',reason:'The draft application and debt schedule report different balances. Confirm the correct principal amount with your accountant.',page:'Documents & Hand-off'});
  const missing=checklist(p).filter(c=>!docs.some(d=>d.category===c&&d.status==='Reviewed'&&documentFlags(d,docs,p).length===0));
  if(missing.length)rows.push({id:'docs',severity:'action',title:`Prepare ${missing.length} document categories`,reason:`Next: ${missing.slice(0,2).join(' and ')}. Confirm periods and requirements with your banker.`,page:'Documents & Hand-off'});
  if(p.request.product==='Revolving credit')rows.push({id:'revolver',severity:'info',title:'Discuss a revolving-credit structure',reason:'Term-loan math does not model draw patterns, fees or revolving availability. Ask your banker for a separate facility analysis.',page:'Loan Readiness'});
  rows.push({id:'conversation',severity:'info',title:'Clarify assumptions with your banker',reason:'Discuss use of funds, collateral, debt schedule and the cash-flow definition before a formal application.',page:'Banker Match'});
  return rows;
 }
-export const scenarioFrom=(p:BusinessProfile):FinancialScenario=>({principal:p.request.amount,rate:8,years:5,cashFlow:p.cashFlow,existingDebt:p.debtService,minDscr:1.25,maxDscr:1.5,paydown:0,annualDebtReduction:0});
+export const scenarioFrom=(p:BusinessProfile):FinancialScenario=>({principal:p.request.amount,rate:8.5,years:7,cashFlow:p.cashFlow,existingDebt:p.debtService,minDscr:1.25,maxDscr:1.5,paydown:0,annualDebtReduction:0});
 export function fingerprint(p:BusinessProfile,d:DocumentRecord[],s:FinancialScenario,banker:string|null){return JSON.stringify({p,d,s,banker});}
 export function packageIsStale(pack:HandoffPackage|null,p:BusinessProfile,d:DocumentRecord[],s:FinancialScenario,banker:string|null){return !!pack&&pack.fingerprint!==fingerprint(p,d,s,banker);}
 export function reviewDocument(d:DocumentRecord,p:BusinessProfile,apply:boolean){return {document:{...d,status:'Reviewed' as const},profile:apply&&d.fields?{...p,cashFlow:d.fields.cashFlow}:p};}

@@ -1,5 +1,7 @@
-FICTIONAL DEMO DOCUMENT. Northstar Precision Works. New York City manufacturer. FY 2025.
-Existing equipment facility: principal $1,600,000; annual debt service $360,000.
-Existing real-estate facility: principal $600,000; annual debt service $120,000.
-Total existing principal: $2,200,000. Total annual debt service: $480,000.
-Any paydown scenario requires a lender-confirmed change in debt service; no proportional reduction is assumed.
+FICTIONAL DEMO DOCUMENT. Northstar Precision Works. New York manufacturer. FY 2025.
+Existing equipment facility: outstanding principal $900,000; annual principal and interest $270,000.
+Existing property facility: outstanding principal $350,000; annual principal and interest $90,000.
+Total outstanding principal: $1,250,000.
+Total existing annual debt payments: $360,000.
+The draft application reports $1,100,000 in principal: a $150,000 discrepancy requiring review.
+Principal balances and annual payments are different measures. Reconciling principal does not automatically change annual payments.

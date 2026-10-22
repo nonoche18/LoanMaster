@@ -1,0 +1,35 @@
+FICTIONAL EXAMPLE DOCUMENT SET — NO LIVE AI ANALYSIS
+Northstar Precision Works | New York | precision manufacturing
+These are the shared Northstar figures used in the profile, matching context, application review and loan analysis.
+
+Example historical income summary
+2024 annual revenue: $12,000,000
+2025 annual revenue: $9,840,000
+Change: -$2,160,000 / $12,000,000 = -18%
+
+Example financing application
+Requested financing: $2,000,000
+Purpose: equipment purchasing and expansion
+Reported outstanding debt principal: $1,100,000
+
+Example debt schedule
+Outstanding equipment debt principal: $900,000
+Outstanding property debt principal: $350,000
+Total debt principal: $1,250,000
+Annual principal and interest payments across existing facilities: $360,000
+Difference from application principal: $150,000; intentionally unresolved until reviewed.
+
+Example FY 2025 cash-flow bridge
+Operating cash generated before debt payments: $1,020,000
+Maintenance capital expenditure: $240,000
+Cash available for annual debt service: $780,000 (after operating needs, before debt payments).
+
+Example document manifest
+Included: annual income summaries, financing application, debt schedule, cash-flow bridge.
+Not included: latest Q3 2026 interim income statement and balance sheet.
+No interim statements are seeded as completed documents.
+
+Scenario A: $2,000,000 at 8.5% annual interest, fully amortizing monthly over 7 years.
+Scenario B: $2,000,000 at 8.5% annual interest, fully amortizing monthly over 10 years.
+No fees, taxes, bank pricing, underwriting or eligibility are modeled.
+Payments, DSCR, residual annual cash flow and total interest are calculated in the frontend using the existing deterministic amortization function.
